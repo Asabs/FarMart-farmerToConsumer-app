@@ -1,0 +1,5 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import 'package:farmmart/presentation/settings_passwordchange_screen/models/settings_passwordchange_model.dart';part 'settings_passwordchange_event.dart';part 'settings_passwordchange_state.dart';/// A bloc that manages the state of a SettingsPasswordchange according to the event that is dispatched to it.
+class SettingsPasswordchangeBloc extends Bloc<SettingsPasswordchangeEvent, SettingsPasswordchangeState> {SettingsPasswordchangeBloc(SettingsPasswordchangeState initialState) : super(initialState) { on<SettingsPasswordchangeInitialEvent>(_onInitialize); }
+
+_onInitialize(SettingsPasswordchangeInitialEvent event, Emitter<SettingsPasswordchangeState> emit, ) async  { emit(state.copyWith(nameController: TextEditingController(), passwordController: TextEditingController(), emailController: TextEditingController(), passwordoneController: TextEditingController(), newpasswordController: TextEditingController(), newpasswordoneController: TextEditingController())); } 
+ }
