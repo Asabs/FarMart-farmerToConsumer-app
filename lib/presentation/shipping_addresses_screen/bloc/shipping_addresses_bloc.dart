@@ -1,0 +1,7 @@
+import 'package:equatable/equatable.dart';import 'package:flutter/material.dart';import '/core/app_export.dart';import '../models/shippingaddress_item_model.dart';import 'package:farmmart/presentation/shipping_addresses_screen/models/shipping_addresses_model.dart';part 'shipping_addresses_event.dart';part 'shipping_addresses_state.dart';/// A bloc that manages the state of a ShippingAddresses according to the event that is dispatched to it.
+class ShippingAddressesBloc extends Bloc<ShippingAddressesEvent, ShippingAddressesState> {ShippingAddressesBloc(ShippingAddressesState initialState) : super(initialState) { on<ShippingAddressesInitialEvent>(_onInitialize); on<ShippingaddressItemEvent>(_shippingaddressItem); }
+
+_onInitialize(ShippingAddressesInitialEvent event, Emitter<ShippingAddressesState> emit, ) async  { emit(state.copyWith(shippingAddressesModelObj: state.shippingAddressesModelObj?.copyWith(shippingaddressItemList: fillShippingaddressItemList()))); } 
+_shippingaddressItem(ShippingaddressItemEvent event, Emitter<ShippingAddressesState> emit, ) { List<ShippingaddressItemModel> newList = List<ShippingaddressItemModel>.from(state.shippingAddressesModelObj!.shippingaddressItemList); newList[event.index] = newList[event.index].copyWith(isCheckbox: event.isCheckbox); emit(state.copyWith(shippingAddressesModelObj: state.shippingAddressesModelObj?.copyWith(shippingaddressItemList: newList))); } 
+List<ShippingaddressItemModel> fillShippingaddressItemList() { return List.generate(3, (index) => ShippingaddressItemModel()); } 
+ }
